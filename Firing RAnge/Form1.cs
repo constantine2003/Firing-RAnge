@@ -508,22 +508,22 @@ namespace Firing_RAnge
 
         private void button12_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            
+
 
         }
 
         private Dictionary<string, int> itemPrices = new Dictionary<string, int>()
         {
-            {"Remington 700", 1000},
-            {"AR-15", 1250},
-            {"Barrett M82", 2500},
-            {"TRG-42", 900},
-            {"Glock 19", 500},
+            {"Remington 700", 3500},
+            {"AR-15", 3000},
+            {"Barrett M82", 18000},
+            {"TRG-42", 12000},
+            {"Glock 19", 600},
             {"Beretta 92X", 600},
             {"CZ Evo3", 700},
             {"MP5", 700}
@@ -626,6 +626,7 @@ namespace Firing_RAnge
             }
 
             receiptText += "\n\nThank you for your purchase!";
+            LoadAmmoDatabase();
 
             total.Text = receiptText; // Display receipt in the "total" label
 
@@ -651,7 +652,34 @@ namespace Firing_RAnge
 
             // Add the receipt data to the database
             AddReceiptToDatabase(currentDate.ToString(), selectedItem, quantity.ToString(), totalPrice, filePath);
+
+            ReceiptData receiptData = new ReceiptData
+            {
+                Date = currentDate,
+                Item = selectedItem,
+                Quantity = quantity,
+                ItemPrice = itemPrice,
+                TotalPrice = totalPrice,
+                HasTrainer = comboBox2.SelectedItem?.ToString() == "Yes",
+                AdditionalCharge = comboBox2.SelectedItem?.ToString() == "Yes" ? 1000 : 0,
+                QRCodeFilePath = filePath
+            };
+
+            Form5 form5 = new Form5(receiptData);
+            form5.Show();
         }
+        public class ReceiptData
+        {
+            public DateTime Date { get; set; }
+            public string Item { get; set; }
+            public int Quantity { get; set; }
+            public int ItemPrice { get; set; }
+            public int TotalPrice { get; set; }
+            public bool HasTrainer { get; set; }
+            public int AdditionalCharge { get; set; }
+            public string QRCodeFilePath { get; set; }
+        }
+
 
         private void AddReceiptToDatabase(string purchaseDate, string itemName, string quantity, int totalPrice, string qrCodeImagePath)
         {
@@ -823,7 +851,7 @@ namespace Firing_RAnge
                 }
 
                 // Update the label with the total revenue and total quantity sold
-                label32.Text = $"Total Revenue: {totalPriceSum} PHP\nTotal Magazine Sold: {totalQuantitySold} units";
+                label32.Text = $"Total Revenue:\n {totalPriceSum} PHP\nTotal Magazine Sold: {totalQuantitySold}\n units";
             }
             else
             {
@@ -843,8 +871,8 @@ namespace Firing_RAnge
                 int dailyAmountSold = CalculateDailyAmountSold(currentDate);
 
                 // Display the daily revenue and daily amount sold quantity in label32
-                label32.Text = $"Daily Revenue ({currentDate.ToShortDateString()}): {dailyRevenue} PHP\n" +
-                               $"Daily Magazine Sold: {dailyAmountSold} units";
+                label32.Text = $"Daily Revenue ({currentDate.ToShortDateString()}):\n {dailyRevenue} PHP\n" +
+                               $"Daily Magazine Sold: {dailyAmountSold}\n units";
             }
             else
             {
@@ -904,8 +932,8 @@ namespace Firing_RAnge
                 int monthlyAmountSold = CalculateMonthlyAmountSold(currentMonth, currentYear);
 
                 // Display the monthly revenue and monthly amount sold in label32
-                label32.Text = $"Monthly Revenue ({currentDate.ToString("MMMM yyyy")}): {monthlyRevenue} PHP\n" +
-                               $"Monthly Magazine Sold: {monthlyAmountSold} units";
+                label32.Text = $"Monthly Revenue ({currentDate.ToString("MMMM yyyy")}):\n {monthlyRevenue} PHP\n" +
+                               $"Monthly Magazine Sold: {monthlyAmountSold} \n units";
             }
             else
             {
@@ -1016,6 +1044,45 @@ namespace Firing_RAnge
             {
                 MessageBox.Show("Error loading Ammo database: " + ex.Message);
             }
+        }
+
+        private void label32_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShowRevenue_Click(object sender, EventArgs e)
+        {
+            // Get the selected start and end dates from dateTimePicker1 and dateTimePicker2
+            DateTime startDate = dateTimePicker1.Value;
+            DateTime endDate = dateTimePicker2.Value;
+
+            // Filter the dataset to include rows within the selected date range
+            DataRow[] filteredRows = ds.Tables["Receipt"].Select($"PurchaseDate >= '{startDate.ToShortDateString()}' AND PurchaseDate <= '{endDate.ToShortDateString()}'");
+
+            // Calculate the total revenue and total quantity sold from the filtered rows
+            int totalRevenue = 0;
+            int totalQuantitySold = 0;
+            foreach (DataRow row in filteredRows)
+            {
+                int totalPrice, quantity;
+                if (int.TryParse(row["TotalPrice"].ToString(), out totalPrice) &&
+                    int.TryParse(row["Quantity"].ToString(), out quantity))
+                {
+                    totalRevenue += totalPrice;
+                    totalQuantitySold += quantity;
+                }
+            }
+
+            // Update label32 to display the total revenue and total quantity sold for the selected date range
+            label32.Text = $"Revenue ({startDate.ToShortDateString()} to {endDate.ToShortDateString()}):\n {totalRevenue} PHP\n" +
+                           $"Quantity Sold: {totalQuantitySold}\n units";
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            Form4 F4 = new Form4();
+            F4.Show();
         }
     }
 }

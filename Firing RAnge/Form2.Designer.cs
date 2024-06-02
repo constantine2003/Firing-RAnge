@@ -190,7 +190,7 @@
             panel1.Controls.Add(ar15);
             panel1.Controls.Add(pictureBox18);
             panel1.Controls.Add(remington700);
-            panel1.Location = new Point(77, 144);
+            panel1.Location = new Point(77, 143);
             panel1.Name = "panel1";
             panel1.Size = new Size(1215, 395);
             panel1.TabIndex = 6;
@@ -205,6 +205,7 @@
             label8.Size = new Size(71, 33);
             label8.TabIndex = 20;
             label8.Text = "MP5";
+            label8.Click += label8_Click;
             // 
             // label7
             // 
@@ -216,6 +217,7 @@
             label7.Size = new Size(127, 33);
             label7.TabIndex = 19;
             label7.Text = "CZ EVO 3";
+            label7.Click += label7_Click;
             // 
             // label6
             // 
@@ -227,6 +229,7 @@
             label6.Size = new Size(193, 33);
             label6.TabIndex = 18;
             label6.Text = "BERETTA 92X";
+            label6.Click += label6_Click;
             // 
             // label5
             // 
@@ -249,6 +252,7 @@
             label4.Size = new Size(108, 33);
             label4.TabIndex = 16;
             label4.Text = "TRG-42";
+            label4.Click += label4_Click;
             // 
             // label3
             // 
@@ -260,6 +264,7 @@
             label3.Size = new Size(185, 33);
             label3.TabIndex = 15;
             label3.Text = "BARRET M82";
+            label3.Click += label3_Click;
             // 
             // label2
             // 
@@ -271,6 +276,7 @@
             label2.Size = new Size(84, 33);
             label2.TabIndex = 14;
             label2.Text = "AR15";
+            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -282,6 +288,7 @@
             label1.Size = new Size(229, 33);
             label1.TabIndex = 13;
             label1.Text = "Remington 700";
+            label1.Click += label1_Click;
             // 
             // mp5
             // 
@@ -598,7 +605,7 @@
             panel5.Controls.Add(label15);
             panel5.Controls.Add(pictureBox22);
             panel5.Controls.Add(label16);
-            panel5.Location = new Point(77, 144);
+            panel5.Location = new Point(77, 143);
             panel5.Name = "panel5";
             panel5.Size = new Size(1236, 395);
             panel5.TabIndex = 25;
@@ -647,7 +654,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1734, 769);
+            ClientSize = new Size(1603, 768);
             Controls.Add(description);
             Controls.Add(panel1);
             Controls.Add(pictureBox23);
@@ -662,7 +669,7 @@
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
             Name = "Form2";
-            Text = "Form2";
+            Text = "Armoury";
             WindowState = FormWindowState.Maximized;
             Load += Form2_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

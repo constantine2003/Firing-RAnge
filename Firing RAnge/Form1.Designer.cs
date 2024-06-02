@@ -109,6 +109,7 @@
             panel7 = new Panel();
             label29 = new Label();
             panel8 = new Panel();
+            button12 = new Button();
             button3 = new Button();
             tbxUpdateQuantity = new TextBox();
             replenishAmmo = new ComboBox();
@@ -126,6 +127,9 @@
             label25 = new Label();
             dataGridView4 = new DataGridView();
             panel10 = new Panel();
+            btnShowRevenue = new Button();
+            dateTimePicker2 = new DateTimePicker();
+            dateTimePicker1 = new DateTimePicker();
             button15 = new Button();
             button9 = new Button();
             label32 = new Label();
@@ -1061,6 +1065,7 @@
             // panel8
             // 
             panel8.BackColor = Color.Transparent;
+            panel8.Controls.Add(button12);
             panel8.Controls.Add(button3);
             panel8.Controls.Add(tbxUpdateQuantity);
             panel8.Controls.Add(replenishAmmo);
@@ -1081,6 +1086,20 @@
             panel8.Name = "panel8";
             panel8.Size = new Size(1075, 633);
             panel8.TabIndex = 40;
+            // 
+            // button12
+            // 
+            button12.BackColor = SystemColors.ButtonShadow;
+            button12.FlatStyle = FlatStyle.Popup;
+            button12.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button12.Location = new Point(323, 203);
+            button12.Name = "button12";
+            button12.Size = new Size(271, 34);
+            button12.TabIndex = 22;
+            button12.Text = "Check Available Trainers";
+            button12.TextAlign = ContentAlignment.TopCenter;
+            button12.UseVisualStyleBackColor = false;
+            button12.Click += button12_Click_1;
             // 
             // button3
             // 
@@ -1118,7 +1137,7 @@
             button14.Font = new Font("Stencil", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button14.Location = new Point(171, 258);
             button14.Name = "button14";
-            button14.Size = new Size(178, 34);
+            button14.Size = new Size(146, 34);
             button14.TabIndex = 18;
             button14.Text = "SCAN RECEIPT";
             button14.TextAlign = ContentAlignment.TopCenter;
@@ -1162,7 +1181,7 @@
             // total
             // 
             total.AutoSize = true;
-            total.BackColor = Color.Transparent;
+            total.BackColor = Color.Gray;
             total.Font = new Font("Times New Roman", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             total.Location = new Point(55, 307);
             total.Name = "total";
@@ -1252,59 +1271,100 @@
             // panel10
             // 
             panel10.BackColor = Color.Transparent;
+            panel10.Controls.Add(btnShowRevenue);
+            panel10.Controls.Add(dateTimePicker2);
+            panel10.Controls.Add(dateTimePicker1);
             panel10.Controls.Add(button15);
             panel10.Controls.Add(button9);
             panel10.Controls.Add(label32);
             panel10.Controls.Add(button8);
             panel10.Controls.Add(dataGridView5);
+            panel10.Font = new Font("Times New Roman", 9F, FontStyle.Bold);
             panel10.Location = new Point(301, 130);
             panel10.Name = "panel10";
             panel10.Size = new Size(1090, 627);
             panel10.TabIndex = 41;
             // 
+            // btnShowRevenue
+            // 
+            btnShowRevenue.BackColor = Color.MistyRose;
+            btnShowRevenue.Font = new Font("Times New Roman", 9F, FontStyle.Bold);
+            btnShowRevenue.Location = new Point(194, 512);
+            btnShowRevenue.Name = "btnShowRevenue";
+            btnShowRevenue.Size = new Size(152, 34);
+            btnShowRevenue.TabIndex = 7;
+            btnShowRevenue.Text = "Show Revenue";
+            btnShowRevenue.UseVisualStyleBackColor = false;
+            btnShowRevenue.Click += btnShowRevenue_Click;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(194, 479);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(300, 28);
+            dateTimePicker2.TabIndex = 6;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(194, 443);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(300, 28);
+            dateTimePicker1.TabIndex = 5;
+            // 
             // button15
             // 
-            button15.Location = new Point(32, 491);
+            button15.BackColor = Color.MistyRose;
+            button15.Font = new Font("Times New Roman", 9F, FontStyle.Bold);
+            button15.Location = new Point(26, 474);
             button15.Name = "button15";
             button15.Size = new Size(162, 34);
             button15.TabIndex = 4;
             button15.Text = "Monthly Revenue";
-            button15.UseVisualStyleBackColor = true;
+            button15.TextAlign = ContentAlignment.MiddleLeft;
+            button15.UseVisualStyleBackColor = false;
             button15.Click += button15_Click;
             // 
             // button9
             // 
-            button9.Location = new Point(32, 537);
+            button9.BackColor = Color.MistyRose;
+            button9.Font = new Font("Times New Roman", 9F, FontStyle.Bold);
+            button9.Location = new Point(26, 514);
             button9.Name = "button9";
             button9.Size = new Size(162, 34);
             button9.TabIndex = 3;
             button9.Text = "Daily Revenue";
-            button9.UseVisualStyleBackColor = true;
+            button9.TextAlign = ContentAlignment.MiddleLeft;
+            button9.UseVisualStyleBackColor = false;
             button9.Click += button9_Click;
             // 
             // label32
             // 
             label32.AutoSize = true;
-            label32.FlatStyle = FlatStyle.Popup;
-            label32.Font = new Font("Modern No. 20", 26F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label32.Location = new Point(200, 449);
+            label32.BackColor = Color.Gray;
+            label32.Font = new Font("Times New Roman", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label32.Location = new Point(500, 444);
             label32.Name = "label32";
-            label32.Size = new Size(610, 53);
+            label32.Size = new Size(253, 25);
             label32.TabIndex = 2;
             label32.Text = "Hello from the Shootin Den";
+            label32.Click += label32_Click;
             // 
             // button8
             // 
-            button8.Location = new Point(32, 449);
+            button8.BackColor = Color.MistyRose;
+            button8.Font = new Font("Times New Roman", 9F, FontStyle.Bold);
+            button8.Location = new Point(26, 437);
             button8.Name = "button8";
             button8.Size = new Size(162, 34);
             button8.TabIndex = 1;
             button8.Text = "Total Revenue";
-            button8.UseVisualStyleBackColor = true;
+            button8.TextAlign = ContentAlignment.MiddleLeft;
+            button8.UseVisualStyleBackColor = false;
             button8.Click += button8_Click;
             // 
             // dataGridView5
             // 
+            dataGridView5.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView5.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView5.Location = new Point(32, 35);
             dataGridView5.Name = "dataGridView5";
@@ -1340,12 +1400,12 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1378, 769);
+            Controls.Add(panel10);
             Controls.Add(panel8);
             Controls.Add(panel2);
             Controls.Add(panel6);
             Controls.Add(panel3);
             Controls.Add(panel9);
-            Controls.Add(panel10);
             Controls.Add(panel7);
             Controls.Add(pictureBox7);
             Controls.Add(button11);
@@ -1367,7 +1427,7 @@
             DoubleBuffered = true;
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Form1";
+            Text = "Main Menu";
             Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -1511,5 +1571,9 @@
         private Button button3;
         private TextBox tbxUpdateQuantity;
         private ComboBox replenishAmmo;
+        private DateTimePicker dateTimePicker1;
+        private Button btnShowRevenue;
+        private DateTimePicker dateTimePicker2;
+        private Button button12;
     }
 }

@@ -27,6 +27,30 @@ namespace Firing_RAnge
 
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             panel1.Visible = false;
@@ -85,28 +109,8 @@ namespace Firing_RAnge
 
         private void pictureBox23_Click(object sender, EventArgs e)
         {
-            // Define the prices of the ammo magazines
-            Dictionary<string, int> ammoPrices = new Dictionary<string, int>()
-    {
-        {"Remington 700", 1000},
-        {"AR-15", 1250},
-        {"Barrett M82", 2500},
-        {"TRG-42", 900},
-        {"Glock 19", 500},
-        {"Beretta 92X", 600},
-        {"CZ Evo3", 700},
-        {"MP5", 700}
-    };
-
-            // Create a message to display the prices
-            string message = "Price of the Ammo Magazines:\n\n";
-            foreach (var kvp in ammoPrices)
-            {
-                message += $"{kvp.Key}: {kvp.Value} PHP\n";
-            }
-
-            // Show the message box
-            MessageBox.Show(message, "Ammo Magazine Prices", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Ammo F5 = new Ammo();
+            F5.Show();
         }
 
         private void pictureBox7_Click(object sender, EventArgs e)
@@ -171,7 +175,7 @@ namespace Firing_RAnge
                                     "Type/Category: Bolt-Action Sniper Rifle\n" +
                                     "Caliber: .338 Lapua Magnum, .300 Winchester Magnum, .308 Winchester\n" +
                                     "Action: Bolt-Action\n" +
-                                    "Magazine Capacity: Detachable box magazine with various capacities\n" +
+                                    "Magazine Capacity: 10-Round detachable box magazine \n" +
                                     "Sights: Usually equipped with high-powered optics for long-range precision shooting\n" +
                                     "Materials: Steel receiver and barrel; various stock materials (e.g., aluminum alloy, synthetic)\n" +
                                     "Features: Adjustable trigger, ergonomic design, accuracy-enhancing features\n" +
@@ -252,6 +256,11 @@ namespace Firing_RAnge
 
             // Update the label text with the gun description
             description.Text = gunDescription;
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
